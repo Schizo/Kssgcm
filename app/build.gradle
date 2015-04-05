@@ -24,5 +24,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.google.android.gms:play-services:7.0.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
-    compile 'org.bitbucket.yahor_makouski:exoplayer:1.0.13.10'
+//    compile 'org.bitbucket.yahor_makouski:exoplayer:1.0.13.10'
+    compile 'com.google.android.exoplayer:exoplayer:r1.2.3'
 }
