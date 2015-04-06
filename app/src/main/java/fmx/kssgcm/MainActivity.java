@@ -1,6 +1,7 @@
 package fmx.kssgcm;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaCodec;
 import android.net.Uri;
@@ -9,7 +10,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SurfaceHolder;
-
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 import com.google.android.exoplayer.ExoPlayer;
@@ -24,6 +27,7 @@ import com.google.android.exoplayer.source.FrameworkSampleExtractor;
 public class MainActivity extends ActionBarActivity  {
 
     private VideoSurfaceView surfaceView;
+    private Button okButton;
 
 
 
@@ -31,12 +35,11 @@ public class MainActivity extends ActionBarActivity  {
     protected void onCreate(Bundle savedInstanceState) {
 
         surfaceView = (VideoSurfaceView)findViewById(R.id.surface_view);
-
+        okButton = (Button)findViewById(R.id.paint);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+//        Intent intent = getIntent();
         new GcmRegistrationAsyncTask(this).execute();
 
 
@@ -87,5 +90,18 @@ public class MainActivity extends ActionBarActivity  {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goButtonClicked(View v) {
+        tToast("Go button clicked!");
+        Intent intent = new Intent(this, FingerPaint.class);
+        startActivity(intent);
+    }
+
+    private void tToast(String s) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+        Toast toast = Toast.makeText(context, s, duration);
+        toast.show();
     }
 }

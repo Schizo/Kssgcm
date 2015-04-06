@@ -2,5 +2,8 @@
     <string name="app_name">Kssgcm</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="Graphics">Hello world Graphics!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_graphics">GraphicsActivity</string>
+    <string name="title_activity_finger">FingerPaint</string>
 </resources>
