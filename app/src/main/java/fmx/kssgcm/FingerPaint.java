@@ -5,12 +5,21 @@ package fmx.kssgcm;
  */
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.BlurMaskFilter;
+import android.graphics.Canvas;
+import android.graphics.EmbossMaskFilter;
+import android.graphics.MaskFilter;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class FingerPaint extends GraphicsActivity{
 
@@ -34,6 +43,9 @@ public class FingerPaint extends GraphicsActivity{
         mBlur = new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL);
     }
 
+
+
+
     private Paint       mPaint;
     private MaskFilter  mEmboss;
     private MaskFilter  mBlur;
@@ -44,6 +56,14 @@ public class FingerPaint extends GraphicsActivity{
 
     public class MyView extends View {
 
+
+        private static final int LAYER_FLAGS = Canvas.MATRIX_SAVE_FLAG |
+                Canvas.CLIP_SAVE_FLAG |
+                Canvas.HAS_ALPHA_LAYER_SAVE_FLAG |
+                Canvas.FULL_COLOR_LAYER_SAVE_FLAG |
+                Canvas.CLIP_TO_LAYER_SAVE_FLAG;
+
+
         private static final float MINP = 0.25f;
         private static final float MAXP = 0.75f;
 
@@ -51,7 +71,7 @@ public class FingerPaint extends GraphicsActivity{
         private Canvas  mCanvas;
         private Path    mPath;
         private Paint   mBitmapPaint;
-
+        private Paint   p;
         public MyView(Context c) {
             super(c);
 
@@ -66,10 +86,31 @@ public class FingerPaint extends GraphicsActivity{
             mCanvas = new Canvas(mBitmap);
         }
 
+        public void onSaveClicked(View v) {
+            tToast("onSaveClicked!");
+
+
+        }
+
+        private void tToast(String s) {
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, s, duration);
+            toast.show();
+        }
+
         @Override
         protected void onDraw(Canvas canvas) {
             canvas.drawColor(0xFFAAAAAA);
+//            canvas.saveLayerAlpha(0, 0, 1280, 720, 0x88, LAYER_FLAGS);
+//
 
+//            p=new Paint();
+//            Bitmap b=BitmapFactory.decodeResource(getResources(), R.drawable.kingdomofheaven);
+//            p.setColor(Color.RED);
+
+
+//            canvas.drawBitmap(b, 300,300, p);
             canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
 
             canvas.drawPath(mPath, mPaint);

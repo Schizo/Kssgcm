@@ -25,5 +25,14 @@
         android:onClick="goButtonClicked"
         android:layout_alignEnd="@+id/surface_view" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Video"
+        android:id="@+id/video"
+        android:onClick="startPlayerIntent"
+        android:layout_alignBottom="@+id/paint"
+        android:layout_toStartOf="@+id/paint" />
+
 
 </RelativeLayout>

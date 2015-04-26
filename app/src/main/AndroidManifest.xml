@@ -53,6 +53,15 @@
         </activity>
 
         <activity
+            android:name="fmx.kssgcm.PlayerActivity"
+            android:label="@string/title_activity_player"
+            android:parentActivityName="fmx.kssgcm.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fmx.kssgcm.MainActivity" />
+        </activity>
+
+        <activity
             android:name="fmx.kssgcm.FingerPaint"
             android:label="@string/title_activity_finger"
             android:parentActivityName="fmx.kssgcm.MainActivity" >
